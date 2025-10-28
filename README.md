@@ -10,10 +10,7 @@ A Streamlit-powered web application that provides personalized movie recommendat
 - **Interactive Interface:** Built with [Streamlit](https://streamlit.io/) for seamless user interaction.
 - **Visualization:** Explore data trends and user/movie profiles with interactive visualizations.
 
-## Demo
 
-![Demo Screenshot](demo_screenshot.png)  
-*Sample interface of the Movie Recommender System.*
 
 ## Getting Started
 
@@ -86,3 +83,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 *Developed by [kartik1003-afs](https://github.com/kartik1003-afs)*
+
