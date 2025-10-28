@@ -68,9 +68,48 @@ def recommend(movie):
 
 
 
+# movies_dict = pickle.load(open("movie_dict.pkl", "rb"))
+# movies = pd.DataFrame(movies_dict)
+# similarity = pickle.load(open("similarity2.pkl", "rb"))
+
+
+
+
+import os
+import pickle
+import pandas as pd
+import requests
+
+# Function to download file from Google Drive
+def download_file(url, filename):
+    if not os.path.exists(filename):
+        print(f"Downloading {filename} ...")
+        r = requests.get(url)
+        with open(filename, 'wb') as f:
+            f.write(r.content)
+        print(f"{filename} downloaded successfully!")
+
+# Your Google Drive direct download links
+movie_dict_url = "https://drive.google.com/uc?export=download&id=1Fd4dd53_wDA72e_AJcVS52jqcni2L1HR"
+similarity_url = "https://drive.google.com/uc?export=download&id=1SpDWnZI1pykKPzGpiOeLq3-xmsb65B1O"
+
+# Download the files if not present
+download_file(movie_dict_url, "movie_dict.pkl")
+download_file(similarity_url, "similarity2.pkl")
+
+# Load the data
 movies_dict = pickle.load(open("movie_dict.pkl", "rb"))
 movies = pd.DataFrame(movies_dict)
 similarity = pickle.load(open("similarity2.pkl", "rb"))
+
+
+
+
+
+
+
+
+
 
 
 
