@@ -5,7 +5,8 @@ import pandas as pd
 import numpy as np
 import requests
 import time
-
+import os     
+import gdown 
 
 API_KEY = "97dbc36ee8ab2b716dad3e60c49470a0"
 PLACEHOLDER_POSTER = "https://via.placeholder.com/500x750.png?text=No+Poster"
