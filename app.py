@@ -75,27 +75,19 @@ def recommend(movie):
 
 
 
-import os
-import pickle
-import pandas as pd
-import requests
+movie_dict_url = "https://drive.google.com/uc?export=download&id=1SpDWnZI1pykKPzGpiOeLq3-xmsb65B1O"
+similarity_url = "https://drive.google.com/uc?export=download&id=1Fd4dd53_wDA72e_AJcVS52jqcni2L1HR"
 
-# Function to download file from Google Drive
-def download_file(url, filename):
-    if not os.path.exists(filename):
-        print(f"Downloading {filename} ...")
-        r = requests.get(url)
-        with open(filename, 'wb') as f:
-            f.write(r.content)
-        print(f"{filename} downloaded successfully!")
+# Download files if not present
+if not os.path.exists("movie_dict.pkl"):
+    st.info("Downloading movie_dict.pkl ...")
+    gdown.download(movie_dict_url, "movie_dict.pkl", quiet=False)
+    st.success("movie_dict.pkl downloaded successfully!")
 
-# Your Google Drive direct download links
-movie_dict_url = "https://drive.google.com/uc?export=download&id=1Fd4dd53_wDA72e_AJcVS52jqcni2L1HR"
-similarity_url = "https://drive.google.com/uc?export=download&id=1SpDWnZI1pykKPzGpiOeLq3-xmsb65B1O"
-
-# Download the files if not present
-download_file(movie_dict_url, "movie_dict.pkl")
-download_file(similarity_url, "similarity2.pkl")
+if not os.path.exists("similarity2.pkl"):
+    st.info("Downloading similarity2.pkl ...")
+    gdown.download(similarity_url, "similarity2.pkl", quiet=False)
+    st.success("similarity2.pkl downloaded successfully!")
 
 # Load the data
 movies_dict = pickle.load(open("movie_dict.pkl", "rb"))
