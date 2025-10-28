@@ -6,9 +6,12 @@ __pycache__/
 .venv/
 env/
 venv/
-*.pkl
 
-# VSCode / PyCharm settings
+# Large data files
+*.pkl
+*.gz
+
+# IDE settings
 .idea/
 .vscode/
 
@@ -18,6 +21,3 @@ venv/
 # OS-specific
 .DS_Store
 Thumbs.db
-
-# Model and data files (optional, if they are large)
-# *.pkl
