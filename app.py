@@ -79,7 +79,7 @@ def recommend(movie):
 movie_dict_url = "https://drive.google.com/uc?export=download&id=1SpDWnZI1pykKPzGpiOeLq3-xmsb65B1O"
 similarity_url = "https://drive.google.com/uc?export=download&id=1Fd4dd53_wDA72e_AJcVS52jqcni2L1HR"
 
-# Download files if not present
+# Download if not exists
 if not os.path.exists("movie_dict.pkl"):
     st.info("Downloading movie_dict.pkl ...")
     gdown.download(movie_dict_url, "movie_dict.pkl", quiet=False)
@@ -90,10 +90,17 @@ if not os.path.exists("similarity2.pkl"):
     gdown.download(similarity_url, "similarity2.pkl", quiet=False)
     st.success("similarity2.pkl downloaded successfully!")
 
-# Load the data
-movies_dict = pickle.load(open("movie_dict.pkl", "rb"))
-movies = pd.DataFrame(movies_dict)
-similarity = pickle.load(open("similarity2.pkl", "rb"))
+# Load data safely
+try:
+    with open("movie_dict.pkl", "rb") as f:
+        movies_dict = pickle.load(f)
+    movies = pd.DataFrame(movies_dict)
+
+    with open("similarity2.pkl", "rb") as f:
+        similarity = pickle.load(f)
+
+except Exception as e:
+    st.error(f"Error loading pickle files: {e}")
 
 
 
